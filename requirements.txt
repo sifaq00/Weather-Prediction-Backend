@@ -3,11 +3,12 @@ Flask-SQLAlchemy
 Flask-Bcrypt
 Flask-JWT-Extended
 Flask-Cors
-scikit-learn==1.3.0  
-numpy==1.23.5 
+scikit-learn  
+numpy==2.1.0
 python-dotenv
 tensorflow
 pandas
 seaborn
 imblearn
 xgboost
+gunicorn
