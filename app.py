@@ -1,5 +1,5 @@
 import os
-import joblib  # Menggunakan joblib
+import joblib 
 import numpy as np
 import tensorflow as tf
 from datetime import datetime
@@ -59,7 +59,6 @@ bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
 # --- MODEL DATABASE (TABEL) ---
-# ... (Kode Model User dan PredictionHistory Anda diletakkan di sini, tidak perlu diubah)
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -83,7 +82,6 @@ class PredictionHistory(db.Model):
 
 
 # --- RUTE API (API ENDPOINTS) ---
-# ... (Semua rute API Anda diletakkan di sini, tidak perlu diubah)
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()

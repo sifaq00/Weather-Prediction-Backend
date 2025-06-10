@@ -75,7 +75,7 @@ def train_and_save_model():
         Dropout(0.3),
         Dense(64, activation='relu'),
         Dropout(0.3),
-        Dense(len(label_encoder.classes_), activation='softmax') # Jumlah neuron output sesuai jumlah kelas
+        Dense(len(label_encoder.classes_), activation='softmax') 
     ])
     
     # Compile model
@@ -91,7 +91,7 @@ def train_and_save_model():
         epochs=100,
         batch_size=32,
         callbacks=[early_stop],
-        verbose=1 # Set ke 1 atau 2 untuk melihat progress
+        verbose=1 
     )
     print("Pelatihan model selesai.")
 
