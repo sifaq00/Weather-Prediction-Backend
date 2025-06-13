@@ -8,7 +8,6 @@ numpy==2.1.0
 python-dotenv
 tensorflow
 pandas
-seaborn
 imblearn
-xgboost
 gunicorn
+psycopg2-binary
