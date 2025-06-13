@@ -1,36 +1,26 @@
 # Blueprint untuk deploy aplikasi Flask dengan database PostgreSQL di Render
 services:
   # 1. Layanan untuk Database PostgreSQL
-  - type: pserv # pserv = Private Service, bagus untuk database
-    name: weather-db-postgres # Nama database Anda di Render
-    plan: free # Menggunakan paket gratis
-    databaseName: weatherdb # Nama database di dalam PostgreSQL
-    user: weatheruser # Username untuk mengakses database
-    # Anda bisa memilih versi lain jika diperlukan
+  - type: db  
+    name: weather-db-postgres
+    engine: postgres # <-- DITAMBAHKAN: Spesifikasikan engine database
+    databaseName: weatherdb
+    user: weatheruser
+    plan: free
     postgresMajorVersion: 15
 
-  # 2. Layanan untuk Aplikasi Web Flask
+  # 2. Layanan untuk Aplikasi Web Flask (Bagian ini sudah benar)
   - type: web
-    name: weather-prediction-app # Nama aplikasi web Anda di Render
-    env: python # Tipe environment
-    plan: free # Menggunakan paket gratis
-    
-    # Branch Git yang akan di-deploy
-    branch: main # Ganti ke 'master' jika itu nama branch utama Anda
-    
-    # Perintah untuk membangun dependensi
-    # Render akan otomatis menjalankan ini saat ada perubahan
+    name: weather-prediction-app
+    env: python
+    plan: free
+    branch: main
     buildCommand: "pip install -r requirements.txt"
-    
-    # Perintah untuk menjalankan aplikasi Anda di produksi
-    # Menggunakan gunicorn untuk menjalankan file 'app.py' dengan objek 'app'
     startCommand: "gunicorn app:app"
-    
-    # Environment variables untuk aplikasi web
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11.9 # Sangat disarankan untuk menentukan versi Python
-      - key: DATABASE_URL_FOR_RENDER # Ini nama variabel yang kita set di app.py
+        value: 3.11.9
+      - key: DATABASE_URL_FOR_RENDER
         fromDatabase:
-          name: weather-db-postgres # Nama service database di atas
-          property: connectionString # Render akan mengisi value-nya dengan URL koneksi
+          name: weather-db-postgres
+          property: connectionString
