@@ -1,0 +1,11 @@
+Flask
+Flask-SQLAlchemy
+Flask-Bcrypt
+Flask-JWT-Extended
+Flask-Cors
+scikit-learn
+numpy
+python-dotenv
+imblearn
+gunicorn
+tflite-runtime
